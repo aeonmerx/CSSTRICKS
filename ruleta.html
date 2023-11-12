@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Ruleta de casino</title>
+<style>
+  .wheel {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid black;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .slot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 50% 0, 100% 0);
+    transform-origin: bottom;
+    transition: transform 3s ease-in-out;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+
+  .red {
+    background-color: red;
+  }
+
+  .black {
+    background-color: black;
+    color: white;
+  }
+
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Ruleta de casino</h1>
+
+<div class="wheel" id="wheel">
+  <div class="slot">0</div>
+  <div class="slot red">32</div>
+  <div class="slot black">15</div>
+  <div class="slot red">19</div>
+  <div class="slot black">4</div>
+  <div class="slot red">21</div>
+  <div class="slot black">2</div>
+  <div class="slot red">25</div>
+  <div class="slot black">17</div>
+  <div class="slot red">34</div>
+  <div class="slot black">6</div>
+  <div class="slot red">27</div>
+  <div class="slot black">13</div>
+  <div class="slot red">36</div>
+  <div class="slot black">11</div>
+  <div class="slot red">30</div>
+  <div class="slot black">8</div>
+  <div class="slot red">23</div>
+  <div class="slot black">10</div>
+  <div class="slot red">5</div>
+  <div class="slot black">24</div>
+  <div class="slot red">16</div>
+  <div class="slot black">33</div>
+  <div class="slot red">1</div>
+  <div class="slot black">20</div>
+  <div class="slot red">14</div>
+  <div class="slot black">31</div>
+  <div class="slot red">9</div>
+  <div class="slot black">22</div>
+  <div class="slot red">18</div>
+  <div class="slot black">29</div>
+  <div class="slot red">7</div>
+  <div class="slot black">28</div>
+  <div class="slot red">12</div>
+  <div class="slot black">35</div>
+  <div class="slot red">3</div>
+  <div class="slot black">26</div>
+</div>
+
+<button id="spin">Girar</button>
+
+<script>
+document.getElementById("spin").addEventListener("click", spin);
+
+function spin() {
+  var wheel = document.getElementById("wheel");
+  var randomDegrees = Math.floor(Math.random() * 360) + 1440; // Gira entre 4 y 8 vueltas completas
+  var selectedSlot = Math.floor((randomDegrees % 360) / 10) + 1;
+
+  wheel.style.transition = "transform 3s ease-in-out";
+  wheel.style.transform = "rotate(" + randomDegrees + "deg)";
+
+  setTimeout(function() {
+    wheel.style.transition = "none";
+    alert("La ruleta se detuvo en el número: " + selectedSlot);
+  }, 3000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+body {
+    font-family: 'Kenia', sans-serif; /* Cambiando la fuente a Kenia */
+    min-height: 100vh;
+    background:#152F43;
+    display: flex;
+    flex-direction: row;
+    flex-grow: initial;
+    flex-flow: column-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBx {
+    position: relative;
+    width: 420px;
+    height: 400px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    z-index: calc(1 * var(--i));
+    opacity: calc(1 - (0.2 * var(--j)));
+    transform: rotate(0deg) skew(25deg) translateX(calc(-35px * var(--i))) translateY(calc(-35px * var(--i)));
+    box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.25);
+}
+
+.imgBx img:hover {
+    transform: rotate(180deg) skew(-25deg) translateX(calc(35px * var(--i))) translateY(calc(35px * var(--i)));
+    box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.25);
+}
+.container{
+    align-items: center;
+    justify-content:center;
+}
+
+.btn-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.hover-btn {
+    background-color: #fff;
+    color: #152F43;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.imgBx:hover + .btn-container,
+.btn-container:hover {
+    opacity: 1;
+}
+
+.btn-primary  {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+h1,h2{
+    color: #F7FCFF;
+}

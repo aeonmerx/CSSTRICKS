@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JUEGO CHAT GPT </title>
+</head>
+<body>
+<button onclick="jugar()">
+EVENT0
+</button>
+<script>
+//Generar número aleatorio entre 1 y 100
+const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+
+//Número máximo de intentos permitidos
+const numeroDeIntentos = 5;
+
+//Contador de intentos
+let intentos = 0;
+
+//Función para validar la entrada del usuario
+function validarEntrada(input) {
+  const numero = Number(input);
+  if (isNaN(numero)) {
+    alert("Debes ingresar un número válido.");
+    return false;
+  }
+  if (numero < 1 || numero > 100) {
+    alert("El número debe estar entre 1 y 100.");
+    return false;
+  }
+  return true;
+}
+
+//Función para comparar el número ingresado con el número aleatorio
+function compararNumeros(numeroIngresado) {
+  intentos++;
+  if (numeroIngresado === numeroAleatorio) {
+    alert(`¡Felicidades! Adivinaste el número en ${intentos} intentos.`);
+    return true;
+  }
+  if (intentos === numeroDeIntentos) {
+    alert(`Se te acabaron los intentos. El número era ${numeroAleatorio}.`);
+    return true;
+  }
+  const mensaje = numeroIngresado > numeroAleatorio ? "menor" : "mayor";
+  alert(`El número que ingresaste es ${mensaje}. Intenta de nuevo.`);
+  return false;
+}
+
+//Función principal del juego
+function jugar() {
+  while (intentos < numeroDeIntentos) {
+    const input = prompt(`Ingresa un número entre 1 y 100. Intento ${intentos + 1}:`);
+    if (!validarEntrada(input)) {
+      continue;
+    }
+    const numeroIngresado = Number(input);
+    if (compararNumeros(numeroIngresado)) {
+      break;
+    }
+  }
+}
+
+</script>
+</body>
+</html>
